@@ -1,7 +1,6 @@
 package com.capstone.lockerapi.models;
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
@@ -35,4 +34,105 @@ public class Team {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
     private List<ForumPost> teamPosts;
+
+    // CONSTRUCTORS
+    // First one with id.
+    // Second one without id.
+    public Team(long id, String teamName, String teamWins, String teamTies, String teamLosses, String teamWinPercentage, String teamStanding, String teamLocation, List<ForumPost> teamPosts) {
+        this.id = id;
+        this.teamName = teamName;
+        this.teamWins = teamWins;
+        this.teamTies = teamTies;
+        this.teamLosses = teamLosses;
+        this.teamWinPercentage = teamWinPercentage;
+        this.teamStanding = teamStanding;
+        this.teamLocation = teamLocation;
+        this.teamPosts = teamPosts;
+    }
+
+    public Team(String teamName, String teamWins, String teamTies, String teamLosses, String teamWinPercentage, String teamStanding, String teamLocation, List<ForumPost> teamPosts) {
+        this.teamName = teamName;
+        this.teamWins = teamWins;
+        this.teamTies = teamTies;
+        this.teamLosses = teamLosses;
+        this.teamWinPercentage = teamWinPercentage;
+        this.teamStanding = teamStanding;
+        this.teamLocation = teamLocation;
+        this.teamPosts = teamPosts;
+    }
+
+    public Team() {}
+
+    // GETTERS & SETTERS
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public String getTeamWins() {
+        return teamWins;
+    }
+
+    public void setTeamWins(String teamWins) {
+        this.teamWins = teamWins;
+    }
+
+    public String getTeamTies() {
+        return teamTies;
+    }
+
+    public void setTeamTies(String teamTies) {
+        this.teamTies = teamTies;
+    }
+
+    public String getTeamLosses() {
+        return teamLosses;
+    }
+
+    public void setTeamLosses(String teamLosses) {
+        this.teamLosses = teamLosses;
+    }
+
+    public String getTeamWinPercentage() {
+        return teamWinPercentage;
+    }
+
+    public void setTeamWinPercentage(String teamWinPercentage) {
+        this.teamWinPercentage = teamWinPercentage;
+    }
+
+    public String getTeamStanding() {
+        return teamStanding;
+    }
+
+    public void setTeamStanding(String teamStanding) {
+        this.teamStanding = teamStanding;
+    }
+
+    public String getTeamLocation() {
+        return teamLocation;
+    }
+
+    public void setTeamLocation(String teamLocation) {
+        this.teamLocation = teamLocation;
+    }
+
+    public List<ForumPost> getTeamPosts() {
+        return teamPosts;
+    }
+
+    public void setTeamPosts(List<ForumPost> teamPosts) {
+        this.teamPosts = teamPosts;
+    }
 }
