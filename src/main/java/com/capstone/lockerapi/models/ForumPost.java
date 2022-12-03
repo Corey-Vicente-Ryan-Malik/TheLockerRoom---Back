@@ -10,6 +10,14 @@ public class ForumPost {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "post_body")
+    @Column(name = "post_body", length = 500)
     private String postBody;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private Team team;
 }
