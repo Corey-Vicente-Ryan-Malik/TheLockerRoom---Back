@@ -2,7 +2,6 @@ package com.capstone.lockerapi.models;
 
 
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
@@ -74,6 +73,8 @@ public class User {
         this.password = password;
         this.favTeam = favTeam;
     }
+
+    public User() {}
 
 
     // GETTERS & SETTERS
