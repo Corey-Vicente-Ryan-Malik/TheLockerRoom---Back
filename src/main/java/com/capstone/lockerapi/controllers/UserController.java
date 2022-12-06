@@ -29,7 +29,7 @@ public class UserController {
         return userService.findById(id).orElseThrow(() -> new UserNotFoundException(id));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/edit/{id}")
     public User updateUser(@RequestBody User userToEdit, @PathVariable long id) {
         return userService.findById(id)
                 .map(user -> {
