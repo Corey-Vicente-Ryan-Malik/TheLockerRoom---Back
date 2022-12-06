@@ -1,5 +1,6 @@
 package com.capstone.lockerapi.controllers;
 
+import com.capstone.lockerapi.exceptions.PostNotFoundException;
 import com.capstone.lockerapi.exceptions.UserNotFoundException;
 import com.capstone.lockerapi.models.ForumPost;
 import com.capstone.lockerapi.models.User;
@@ -23,8 +24,9 @@ public class ForumPostController {
     }
 
     @GetMapping("/{id}")
-    public Optional<ForumPost> showSinglePost(@PathVariable long id) {
-        return forumPostService.findPostById(id);
+    public ForumPost showSinglePost(@PathVariable long id) {
+        return forumPostService.findPostById(id)
+                .orElseThrow(() -> new PostNotFoundException(id));
     }
 
     @PostMapping("/create")
@@ -40,7 +42,7 @@ public class ForumPostController {
                         post.setUser(postToEdit.getUser());
                         post.setTeam(postToEdit.getTeam());
                         return forumPostService.savePost(post);
-                    }).orElseThrow(() -> new UserNotFoundException(id));
+                    }).orElseThrow(() -> new PostNotFoundException(id));
     }
 
     @DeleteMapping("/delete/{id}")
