@@ -5,15 +5,15 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "bets")
-public class Bet {
+@Table(name = "stakes")
+public class Stake {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "bet_amount", nullable = false)
-    private double betAmount;
+    @Column(name = "stake_amount", nullable = false)
+    private double stakeAmount;
 
     @Column(name = "created_at", nullable = false)
     private LocalDate createdAt;
@@ -33,9 +33,9 @@ public class Bet {
     // CONSTRUCTORS
     // First one with id.
     // Second one without id.
-    public Bet(long id, double betAmount, LocalDate createdAt, LocalDate scheduledAt, User creator, User participant, Team winningTeam) {
+    public Stake(long id, double stakeAmount, LocalDate createdAt, LocalDate scheduledAt, User creator, User participant, Team winningTeam) {
         this.id = id;
-        this.betAmount = betAmount;
+        this.stakeAmount = stakeAmount;
         this.createdAt = createdAt;
         this.scheduledAt = scheduledAt;
         this.creator = creator;
@@ -43,8 +43,8 @@ public class Bet {
         this.winningTeam = winningTeam;
     }
 
-    public Bet(double betAmount, LocalDate createdAt, LocalDate scheduledAt, User creator, User participant, Team winningTeam) {
-        this.betAmount = betAmount;
+    public Stake(double stakeAmount, LocalDate createdAt, LocalDate scheduledAt, User creator, User participant, Team winningTeam) {
+        this.stakeAmount = stakeAmount;
         this.createdAt = createdAt;
         this.scheduledAt = scheduledAt;
         this.creator = creator;
@@ -52,7 +52,7 @@ public class Bet {
         this.winningTeam = winningTeam;
     }
 
-    public Bet() {}
+    public Stake() {}
 
     // GETTERS & SETTERS
     public long getId() {
@@ -63,12 +63,12 @@ public class Bet {
         this.id = id;
     }
 
-    public double getBetAmount() {
-        return betAmount;
+    public double getStakeAmount() {
+        return stakeAmount;
     }
 
-    public void setBetAmount(double betAmount) {
-        this.betAmount = betAmount;
+    public void setStakeAmount(double stakeAmount) {
+        this.stakeAmount = stakeAmount;
     }
 
     public LocalDate getCreatedAt() {
