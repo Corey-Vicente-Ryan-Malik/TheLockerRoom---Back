@@ -36,16 +36,16 @@ public class User {
     private Team favTeam;
 
     // #Subject to change
-    // One user can have one bet open at a time.
+    // One user can have one stake open at a time.
     @OneToOne
-    private Bet bet;
+    private Stake stake;
 
 
     // CONSTRUCTORS
     // First one with all fields.
     // Second one for registration without favorite team.
     // Third one for registration with favorite team.
-    public User(long id, String firstName, String lastName, String username, String email, String password, List<ForumPost> posts, Team favTeam, Bet bet) {
+    public User(long id, String firstName, String lastName, String username, String email, String password, List<ForumPost> posts, Team favTeam, Stake stake) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -54,7 +54,7 @@ public class User {
         this.password = password;
         this.posts = posts;
         this.favTeam = favTeam;
-        this.bet = bet;
+        this.stake = stake;
     }
 
     public User(String firstName, String lastName, String username, String email, String password) {
@@ -142,11 +142,11 @@ public class User {
         this.favTeam = favTeam;
     }
 
-    public Bet getBet() {
-        return bet;
+    public Stake getStake() {
+        return stake;
     }
 
-    public void setBet(Bet bet) {
-        this.bet = bet;
+    public void setStake(Stake stake) {
+        this.stake = stake;
     }
 }
