@@ -1,8 +1,8 @@
 package com.capstone.lockerapi.controllers;
 
-
 import com.capstone.lockerapi.exceptions.UserNotFoundException;
 import com.capstone.lockerapi.models.User;
+import com.capstone.lockerapi.models.UserRole;
 import com.capstone.lockerapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +30,7 @@ public class UserController {
         // Sends 201 status, new resource has been created.
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/users/register").toUriString());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(UserRole.USER);
         return ResponseEntity.created(uri).body(userService.saveUser(user));
     }
 
@@ -53,6 +54,7 @@ public class UserController {
                     user.setEmail(userToEdit.getEmail());
                     user.setUsername(userToEdit.getUsername());
                     user.setPassword(userToEdit.getPassword());
+                    user.setRole(userToEdit.getRole());
                     return userService.saveUser(user);
                 }).orElseThrow(() -> new UserNotFoundException(id)));
     }
