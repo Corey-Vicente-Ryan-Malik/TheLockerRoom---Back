@@ -2,7 +2,7 @@ package com.capstone.lockerapi.services;
 
 import com.capstone.lockerapi.models.User;
 import com.capstone.lockerapi.repositories.UserRepository;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

@@ -1,6 +1,6 @@
 package com.capstone.lockerapi.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "forum_posts")

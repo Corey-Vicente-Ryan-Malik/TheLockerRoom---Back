@@ -7,9 +7,10 @@ import com.capstone.lockerapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import java.net.URI;
 import java.util.List;
 
@@ -21,10 +22,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         // Sends 201 status, new resource has been created.
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/users/register").toUriString());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return ResponseEntity.created(uri).body(userService.saveUser(user));
     }
 
@@ -38,6 +43,7 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getAllUsers());
     }
 
+    @PreAuthorize("hasAuthority('USER')")
     @PutMapping("/edit/{id}")
     public ResponseEntity<User> updateUser(@RequestBody User userToEdit, @PathVariable long id) {
         return ResponseEntity.ok().body(userService.findById(id)

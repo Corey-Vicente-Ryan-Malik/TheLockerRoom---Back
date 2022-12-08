@@ -1,6 +1,6 @@
 package com.capstone.lockerapi.models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
