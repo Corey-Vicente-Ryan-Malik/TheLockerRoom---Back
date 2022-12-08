@@ -15,13 +15,13 @@ public class Team {
     private String teamName;
 
     @Column(name = "team_wins", nullable = false)
-    private String teamWins;
+    private int teamWins;
 
     @Column(name = "team_ties", nullable = false)
-    private String teamTies;
+    private int teamTies;
 
     @Column(name = "team_losses", nullable = false)
-    private String teamLosses;
+    private int teamLosses;
 
     @Column(name = "team_win_percentage", nullable = false)
     private String teamWinPercentage;
@@ -32,13 +32,19 @@ public class Team {
     @Column(name = "team_location", nullable = false)
     private String teamLocation;
 
+    @Column(name = "division_wins")
+    private int divisionWins;
+
+    @Column(name = "division_ties")
+    private int divisionTies;
+
+    @Column(name = "division_losses")
+    private int division_losses;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
     private List<ForumPost> teamPosts;
 
-    // CONSTRUCTORS
-    // First one with id.
-    // Second one without id.
-    public Team(long id, String teamName, String teamWins, String teamTies, String teamLosses, String teamWinPercentage, String teamStanding, String teamLocation, List<ForumPost> teamPosts) {
+    public Team(long id, String teamName, int teamWins, int teamTies, int teamLosses, String teamWinPercentage, String teamStanding, String teamLocation, int divisionWins, int divisionTies, int division_losses, List<ForumPost> teamPosts) {
         this.id = id;
         this.teamName = teamName;
         this.teamWins = teamWins;
@@ -47,10 +53,13 @@ public class Team {
         this.teamWinPercentage = teamWinPercentage;
         this.teamStanding = teamStanding;
         this.teamLocation = teamLocation;
+        this.divisionWins = divisionWins;
+        this.divisionTies = divisionTies;
+        this.division_losses = division_losses;
         this.teamPosts = teamPosts;
     }
 
-    public Team(String teamName, String teamWins, String teamTies, String teamLosses, String teamWinPercentage, String teamStanding, String teamLocation, List<ForumPost> teamPosts) {
+    public Team(String teamName, int teamWins, int teamTies, int teamLosses, String teamWinPercentage, String teamStanding, String teamLocation, int divisionWins, int divisionTies, int division_losses, List<ForumPost> teamPosts) {
         this.teamName = teamName;
         this.teamWins = teamWins;
         this.teamTies = teamTies;
@@ -58,12 +67,27 @@ public class Team {
         this.teamWinPercentage = teamWinPercentage;
         this.teamStanding = teamStanding;
         this.teamLocation = teamLocation;
+        this.divisionWins = divisionWins;
+        this.divisionTies = divisionTies;
+        this.division_losses = division_losses;
         this.teamPosts = teamPosts;
+    }
+
+    public Team(String teamName, int teamWins, int teamTies, int teamLosses, String teamWinPercentage, String teamStanding, String teamLocation, int divisionWins, int divisionTies, int division_losses) {
+        this.teamName = teamName;
+        this.teamWins = teamWins;
+        this.teamTies = teamTies;
+        this.teamLosses = teamLosses;
+        this.teamWinPercentage = teamWinPercentage;
+        this.teamStanding = teamStanding;
+        this.teamLocation = teamLocation;
+        this.divisionWins = divisionWins;
+        this.divisionTies = divisionTies;
+        this.division_losses = division_losses;
     }
 
     public Team() {}
 
-    // GETTERS & SETTERS
     public long getId() {
         return id;
     }
@@ -80,27 +104,27 @@ public class Team {
         this.teamName = teamName;
     }
 
-    public String getTeamWins() {
+    public int getTeamWins() {
         return teamWins;
     }
 
-    public void setTeamWins(String teamWins) {
+    public void setTeamWins(int teamWins) {
         this.teamWins = teamWins;
     }
 
-    public String getTeamTies() {
+    public int getTeamTies() {
         return teamTies;
     }
 
-    public void setTeamTies(String teamTies) {
+    public void setTeamTies(int teamTies) {
         this.teamTies = teamTies;
     }
 
-    public String getTeamLosses() {
+    public int getTeamLosses() {
         return teamLosses;
     }
 
-    public void setTeamLosses(String teamLosses) {
+    public void setTeamLosses(int teamLosses) {
         this.teamLosses = teamLosses;
     }
 
@@ -126,6 +150,30 @@ public class Team {
 
     public void setTeamLocation(String teamLocation) {
         this.teamLocation = teamLocation;
+    }
+
+    public int getDivisionWins() {
+        return divisionWins;
+    }
+
+    public void setDivisionWins(int divisionWins) {
+        this.divisionWins = divisionWins;
+    }
+
+    public int getDivisionTies() {
+        return divisionTies;
+    }
+
+    public void setDivisionTies(int divisionTies) {
+        this.divisionTies = divisionTies;
+    }
+
+    public int getDivision_losses() {
+        return division_losses;
+    }
+
+    public void setDivision_losses(int division_losses) {
+        this.division_losses = division_losses;
     }
 
     public List<ForumPost> getTeamPosts() {
