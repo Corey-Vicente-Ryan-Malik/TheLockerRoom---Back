@@ -72,14 +72,6 @@ public class User {
         this.role = role;
     }
 
-    public UserRole getRole() {
-        return role;
-    }
-
-    public void setRole(UserRole role) {
-        this.role = role;
-    }
-
     public User(String firstName, String lastName, String username, String email, String password, UserRole role, Team favTeam) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -94,10 +86,10 @@ public class User {
 
 
     // GETTERS & SETTERS
+
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -140,6 +132,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
     }
 
     public List<ForumPost> getPosts() {

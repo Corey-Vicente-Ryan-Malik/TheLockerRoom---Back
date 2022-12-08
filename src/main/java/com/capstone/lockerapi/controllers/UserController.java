@@ -15,7 +15,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "https://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/users")
 public class UserController {
 
