@@ -16,7 +16,6 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -25,6 +24,7 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    // Mapping to CREATE new user entity.
     @PostMapping("/register")
     public ResponseEntity<User> createUser(@RequestBody User user) {
         // Sends 201 status, new resource has been created.
@@ -34,18 +34,21 @@ public class UserController {
         return ResponseEntity.created(uri).body(userService.saveUser(user));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable long id) {
-        return ResponseEntity.ok().body(userService.findById(id).orElseThrow(() -> new UserNotFoundException(id)));
-    }
-
-    @GetMapping("/all")
+    // Mapping to READ/VIEW all users.
+    @GetMapping("/users")
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok().body(userService.getAllUsers());
     }
 
+    // Mapping to READ/VIEW single user.
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable long id) {
+        return ResponseEntity.ok().body(userService.findById(id).orElseThrow(() -> new UserNotFoundException(id)));
+    }
+
+    // Mapping to UPDATE/EDIT user information.
     @PreAuthorize("hasAuthority('USER')")
-    @PutMapping("/edit/{id}")
+    @PutMapping("/users/{id}/edit-profile")
     public ResponseEntity<User> updateUser(@RequestBody User userToEdit, @PathVariable long id) {
         return ResponseEntity.ok().body(userService.findById(id)
                 .map(user -> {
@@ -60,7 +63,8 @@ public class UserController {
     }
 
 
-    @DeleteMapping("/delete/{id}")
+    // Mapping to DELETE user entity.
+    @DeleteMapping("/users/{id}/delete")
     public ResponseEntity<HttpStatus> deleteUser(@PathVariable long id) {
         userService.deleteUserById(id);
         return ResponseEntity.noContent().build();
