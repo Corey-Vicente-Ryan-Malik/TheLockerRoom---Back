@@ -1,7 +1,5 @@
 package com.capstone.lockerapi.security;
 
-
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,16 +15,24 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+
+// Extending AuthorizationServerConfigurerAdapter to configure the Oauth authorization server.
 @Configuration
 @EnableAuthorizationServer
 public class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
+    /**
+     * AuthenticationManager is a static class that manages the authentication modules that an application uses.
+     * When a request is made to protected resources, the AuthenticationManager calls the Authenticate method
+     * to get an Authorization instance to use in subsequent requests.
+     */
     private final AuthenticationManager authenticationManager;
 
     private final PasswordEncoder passwordEncoder;
 
     private final UserDetailsLoader userDetailsLoader;
 
+    // Assigning default values to class fields.
     @Value("${jwt.clientId:sports-app-client}")
     private String clientId;
 
@@ -36,7 +42,7 @@ public class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Value("${jwt.signing-key:123}")
     private String jwtSigningKey;
 
-    @Value("${jwt.accessTokenValiditySeconds:43200}") //12 Hours
+    @Value("${jwt.accessTokenValiditySeconds:43200}") // 12 Hours
     private int accessTokenValiditySeconds;
 
     @Value("${jwt.authorizeGrantTypes:password,authorization_code,refresh_token}")
@@ -45,6 +51,7 @@ public class OAuthServerConfig extends AuthorizationServerConfigurerAdapter {
     @Value("${jwt.refreshTokenValiditySeconds:2592000}") // 30 Days
     private int refreshTokenValiditySeconds;
 
+    // Constructor
     public OAuthServerConfig(AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder, UserDetailsLoader userDetailsLoader) {
         this.authenticationManager = authenticationManager;
         this.passwordEncoder = passwordEncoder;

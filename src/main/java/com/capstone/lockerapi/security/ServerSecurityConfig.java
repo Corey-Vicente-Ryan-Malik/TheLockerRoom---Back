@@ -18,12 +18,15 @@ public class ServerSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsLoader userDetailsLoader;
 
+    // Constructor
     public ServerSecurityConfig(@Qualifier("UserDetailsLoader") UserDetailsLoader userDetailsLoader) {
         this.userDetailsLoader = userDetailsLoader;
     }
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
+        // DaoAuthenticationProvider is an authentication provider that uses a Data Access Object
+        // to retrieve user information from a relational database.
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(passwordEncoder());
         provider.setUserDetailsService(userDetailsLoader);
