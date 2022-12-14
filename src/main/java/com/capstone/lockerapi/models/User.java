@@ -1,10 +1,9 @@
 package com.capstone.lockerapi.models;
 
 
+import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
-
-// Change the rest of models imports.
 
 @Entity
 @Table(name="users")

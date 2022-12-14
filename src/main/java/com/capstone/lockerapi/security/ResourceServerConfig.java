@@ -52,8 +52,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 // Giving "/register" endpoint public access w/o authentication.
                 .antMatchers("/register")
                 .permitAll()
-                .antMatchers("/**")
-                .permitAll()
                 // Restricting access to any other endpoints besides those with "permitAll()"
                 // And users MUST BE authenticated to access endpoints.
                 .anyRequest().authenticated()
