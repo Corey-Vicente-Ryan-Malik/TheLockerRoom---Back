@@ -42,10 +42,12 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .authorizeRequests()
                 // Only those with the role of "USER" will have access to "/users" endpoint.
                 .antMatchers("/users")
-                .hasAnyAuthority("USER")
+                .permitAll()
                 // Only those with the role of "USER" will have access to "/posts" endpoint.
                 .antMatchers("/posts")
-                .hasAnyAuthority("USER")
+                .permitAll()
+                .antMatchers("/teams")
+                .permitAll()
                 // For API documentation.
                 .antMatchers("/swagger-ui/**", "/v3/api-docs/**")
                 .permitAll()
