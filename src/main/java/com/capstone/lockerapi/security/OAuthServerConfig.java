@@ -1,5 +1,6 @@
 package com.capstone.lockerapi.security;
 
+import com.capstone.lockerapi.models.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

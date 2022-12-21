@@ -5,7 +5,6 @@ import com.capstone.lockerapi.repositories.UserRepository;
 import javax.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -46,9 +45,13 @@ public class UserServiceImpl implements UserService {
 //                userToReturn.add(user);
 //            }
 //        }
-//        User userFound = new User(userToReturn.get(0).getFirstName(), userToReturn.get(0).getLastName(), userToReturn.get(0).getEmail(), userToReturn.get(0).getUsername(), userToReturn.get(0).getPassword());
-//        return userFound;
+//        return userToReturn.get(0);
 //    }
+//
+    @Override
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
 
     @Override
     public List<User> getAllUsers() {
