@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -40,11 +41,19 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getAllUsers());
     }
 
+    @RequestMapping(value = "/user/", method = RequestMethod.GET)
+    @ResponseBody
+    public User loggedInUser(Principal principal) {
+        User user = userService.findByUsername(principal.getName());
+        return user;
+    }
+
     // Mapping to READ/VIEW single user.
     @GetMapping("/users/{id}")
     public ResponseEntity<User> getUserById(@PathVariable long id) {
         return ResponseEntity.ok().body(userService.findById(id).orElseThrow(() -> new UserNotFoundException(id)));
     }
+
 
     // Mapping to UPDATE/EDIT user information.
     @PreAuthorize("hasAuthority('USER')")

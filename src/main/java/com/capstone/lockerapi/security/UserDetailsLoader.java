@@ -34,6 +34,7 @@ public class UserDetailsLoader implements UserDetailsService {
                 user.getUsername(),
                 user.getPassword(),
                 List.of(authority)
+
         );
     }
 }
