@@ -1,8 +1,10 @@
 package com.capstone.lockerapi.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 @Entity
+@JsonIgnoreProperties({"team"})
 @Table(name = "forum_posts")
 public class ForumPost {
 
@@ -13,6 +15,8 @@ public class ForumPost {
     @Column(name = "post_body", length = 500)
     private String postBody;
 
+
+    @JsonIgnoreProperties({"posts", "password", "stake", "firstName", "lastName", "email", "favTeam", "role"})
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

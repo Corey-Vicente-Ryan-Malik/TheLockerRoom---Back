@@ -40,19 +40,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .and()
                 // Allowing restricting access to API endpoints.
                 .authorizeRequests()
-                // Only those with the role of "USER" will have access to "/users" endpoint.
-                .antMatchers("/users")
-                .permitAll()
-                // Only those with the role of "USER" will have access to "/posts" endpoint.
-                .antMatchers("/posts")
-                .permitAll()
-                .antMatchers("/teams")
+                .antMatchers("/posts", "/teams", "/register")
                 .permitAll()
                 // For API documentation.
                 .antMatchers("/swagger-ui/**", "/v3/api-docs/**")
-                .permitAll()
-                // Giving "/register" endpoint public access w/o authentication.
-                .antMatchers("/register")
                 .permitAll()
                 // Restricting access to any other endpoints besides those with "permitAll()"
                 // And users MUST BE authenticated to access endpoints.
