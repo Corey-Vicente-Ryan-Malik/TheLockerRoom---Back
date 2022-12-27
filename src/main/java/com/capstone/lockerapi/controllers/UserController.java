@@ -36,6 +36,7 @@ public class UserController {
     }
 
     // Mapping to READ/VIEW all users.
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/users")
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok().body(userService.getAllUsers());
@@ -49,6 +50,7 @@ public class UserController {
     }
 
     // Mapping to READ/VIEW single user.
+    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/users/{id}")
     public ResponseEntity<User> getUserById(@PathVariable long id) {
         return ResponseEntity.ok().body(userService.findById(id).orElseThrow(() -> new UserNotFoundException(id)));
