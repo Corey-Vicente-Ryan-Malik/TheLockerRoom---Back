@@ -26,8 +26,6 @@ public class ForumPost {
     private Team team;
 
     // CONSTRUCTORS
-    // First one with id.
-    // Second one without id.
     public ForumPost(long id, String postBody, User user, Team team) {
         this.id = id;
         this.postBody = postBody;
@@ -39,6 +37,11 @@ public class ForumPost {
         this.postBody = postBody;
         this.user = user;
         this.team = team;
+    }
+
+    public ForumPost(String postBody, User user) {
+        this.postBody = postBody;
+        this.user = user;
     }
 
     public ForumPost() {}

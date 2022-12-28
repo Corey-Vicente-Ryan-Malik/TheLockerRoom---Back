@@ -43,9 +43,9 @@ public class TeamController {
                     team.setTeamWins(teamToEdit.getTeamWins());
                     team.setTeamTies(teamToEdit.getTeamTies());
                     team.setTeamLosses(teamToEdit.getTeamLosses());
-                    team.setTeamWinPercentage(teamToEdit.getTeamWinPercentage());
                     team.setTeamStanding(teamToEdit.getTeamStanding());
                     team.setTeamLocation(teamToEdit.getTeamLocation());
+                    team.setApiId(teamToEdit.getApiId());
                     return teamService.saveTeam(team);
                 }).orElseThrow(() -> new UserNotFoundException(id)));
     }
