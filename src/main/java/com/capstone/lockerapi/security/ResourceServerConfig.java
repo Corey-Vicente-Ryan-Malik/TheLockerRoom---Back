@@ -31,6 +31,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         // Configuring access rules for secure resources.
         http
+                .csrf()
+                .disable()
+                .cors()
+                .disable()
                 // Disabling default Spring Security login page.
                 .formLogin()
                 .disable()

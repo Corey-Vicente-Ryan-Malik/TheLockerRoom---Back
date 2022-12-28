@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(allowedHeaders = "*", origins = "http://localhost:3000")
 public class TeamController {
 
     @Autowired

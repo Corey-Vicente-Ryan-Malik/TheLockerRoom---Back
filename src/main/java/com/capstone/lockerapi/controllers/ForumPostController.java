@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(allowedHeaders = "*", origins = "http://localhost:3000")
 public class ForumPostController {
 
     @Autowired
@@ -44,7 +44,6 @@ public class ForumPostController {
                     .map(post -> {
                         post.setPostBody(postToEdit.getPostBody());
                         post.setUser(postToEdit.getUser());
-                        post.setTeam(postToEdit.getTeam());
                         return forumPostService.savePost(post);
                     }).orElseThrow(() -> new PostNotFoundException(id)));
     }

@@ -16,7 +16,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(allowedHeaders = "*", origins = "http://localhost:3000")
 public class UserController {
 
     @Autowired
