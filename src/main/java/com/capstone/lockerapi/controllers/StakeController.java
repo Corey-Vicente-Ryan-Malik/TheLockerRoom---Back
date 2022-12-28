@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(allowedHeaders = "*", origins = "http://localhost:3000")
 public class StakeController {
 
     @Autowired

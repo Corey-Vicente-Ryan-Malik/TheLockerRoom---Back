@@ -41,10 +41,8 @@ public class Team {
     @Column(name = "api_id")
     private int apiId;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
-    private List<ForumPost> teamPosts;
 
-    public Team(long id, String teamName, int teamWins, int teamTies, int teamLosses, String teamStanding, String teamLocation, int divisionWins, int divisionTies, int division_losses, List<ForumPost> teamPosts) {
+    public Team(long id, String teamName, int teamWins, int teamTies, int teamLosses, String teamStanding, String teamLocation, int divisionWins, int divisionTies, int division_losses) {
         this.id = id;
         this.teamName = teamName;
         this.teamWins = teamWins;
@@ -55,20 +53,6 @@ public class Team {
         this.divisionWins = divisionWins;
         this.divisionTies = divisionTies;
         this.division_losses = division_losses;
-        this.teamPosts = teamPosts;
-    }
-
-    public Team(String teamName, int teamWins, int teamTies, int teamLosses, String teamStanding, String teamLocation, int divisionWins, int divisionTies, int division_losses, List<ForumPost> teamPosts) {
-        this.teamName = teamName;
-        this.teamWins = teamWins;
-        this.teamTies = teamTies;
-        this.teamLosses = teamLosses;
-        this.teamStanding = teamStanding;
-        this.teamLocation = teamLocation;
-        this.divisionWins = divisionWins;
-        this.divisionTies = divisionTies;
-        this.division_losses = division_losses;
-        this.teamPosts = teamPosts;
     }
 
     public Team(String teamName, int teamWins, int teamTies, int teamLosses, String teamStanding, String teamLocation, int divisionWins, int divisionTies, int division_losses) {
@@ -174,11 +158,4 @@ public class Team {
         this.apiId = apiId;
     }
 
-    public List<ForumPost> getTeamPosts() {
-        return teamPosts;
-    }
-
-    public void setTeamPosts(List<ForumPost> teamPosts) {
-        this.teamPosts = teamPosts;
-    }
 }

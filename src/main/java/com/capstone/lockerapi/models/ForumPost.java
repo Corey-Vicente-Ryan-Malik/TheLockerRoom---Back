@@ -21,22 +21,12 @@ public class ForumPost {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "team_id")
-    private Team team;
 
     // CONSTRUCTORS
-    public ForumPost(long id, String postBody, User user, Team team) {
+    public ForumPost(long id, String postBody, User user) {
         this.id = id;
         this.postBody = postBody;
         this.user = user;
-        this.team = team;
-    }
-
-    public ForumPost(String postBody, User user, Team team) {
-        this.postBody = postBody;
-        this.user = user;
-        this.team = team;
     }
 
     public ForumPost(String postBody, User user) {
@@ -71,11 +61,4 @@ public class ForumPost {
         this.user = user;
     }
 
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
 }
