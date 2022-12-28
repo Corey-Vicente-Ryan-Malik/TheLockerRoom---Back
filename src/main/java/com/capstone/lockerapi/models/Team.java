@@ -23,9 +23,6 @@ public class Team {
     @Column(name = "team_losses", nullable = false)
     private int teamLosses;
 
-    @Column(name = "team_win_percentage", nullable = false)
-    private String teamWinPercentage;
-
     @Column(name = "team_standing", nullable = false)
     private String teamStanding;
 
@@ -41,16 +38,18 @@ public class Team {
     @Column(name = "division_losses")
     private int division_losses;
 
+    @Column(name = "api_id")
+    private int apiId;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "team")
     private List<ForumPost> teamPosts;
 
-    public Team(long id, String teamName, int teamWins, int teamTies, int teamLosses, String teamWinPercentage, String teamStanding, String teamLocation, int divisionWins, int divisionTies, int division_losses, List<ForumPost> teamPosts) {
+    public Team(long id, String teamName, int teamWins, int teamTies, int teamLosses, String teamStanding, String teamLocation, int divisionWins, int divisionTies, int division_losses, List<ForumPost> teamPosts) {
         this.id = id;
         this.teamName = teamName;
         this.teamWins = teamWins;
         this.teamTies = teamTies;
         this.teamLosses = teamLosses;
-        this.teamWinPercentage = teamWinPercentage;
         this.teamStanding = teamStanding;
         this.teamLocation = teamLocation;
         this.divisionWins = divisionWins;
@@ -59,12 +58,11 @@ public class Team {
         this.teamPosts = teamPosts;
     }
 
-    public Team(String teamName, int teamWins, int teamTies, int teamLosses, String teamWinPercentage, String teamStanding, String teamLocation, int divisionWins, int divisionTies, int division_losses, List<ForumPost> teamPosts) {
+    public Team(String teamName, int teamWins, int teamTies, int teamLosses, String teamStanding, String teamLocation, int divisionWins, int divisionTies, int division_losses, List<ForumPost> teamPosts) {
         this.teamName = teamName;
         this.teamWins = teamWins;
         this.teamTies = teamTies;
         this.teamLosses = teamLosses;
-        this.teamWinPercentage = teamWinPercentage;
         this.teamStanding = teamStanding;
         this.teamLocation = teamLocation;
         this.divisionWins = divisionWins;
@@ -73,12 +71,11 @@ public class Team {
         this.teamPosts = teamPosts;
     }
 
-    public Team(String teamName, int teamWins, int teamTies, int teamLosses, String teamWinPercentage, String teamStanding, String teamLocation, int divisionWins, int divisionTies, int division_losses) {
+    public Team(String teamName, int teamWins, int teamTies, int teamLosses, String teamStanding, String teamLocation, int divisionWins, int divisionTies, int division_losses) {
         this.teamName = teamName;
         this.teamWins = teamWins;
         this.teamTies = teamTies;
         this.teamLosses = teamLosses;
-        this.teamWinPercentage = teamWinPercentage;
         this.teamStanding = teamStanding;
         this.teamLocation = teamLocation;
         this.divisionWins = divisionWins;
@@ -128,13 +125,6 @@ public class Team {
         this.teamLosses = teamLosses;
     }
 
-    public String getTeamWinPercentage() {
-        return teamWinPercentage;
-    }
-
-    public void setTeamWinPercentage(String teamWinPercentage) {
-        this.teamWinPercentage = teamWinPercentage;
-    }
 
     public String getTeamStanding() {
         return teamStanding;
@@ -174,6 +164,14 @@ public class Team {
 
     public void setDivision_losses(int division_losses) {
         this.division_losses = division_losses;
+    }
+
+    public int getApiId() {
+        return apiId;
+    }
+
+    public void setApiId(int apiId) {
+        this.apiId = apiId;
     }
 
     public List<ForumPost> getTeamPosts() {
