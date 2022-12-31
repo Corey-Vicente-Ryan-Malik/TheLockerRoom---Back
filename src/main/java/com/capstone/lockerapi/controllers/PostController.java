@@ -1,45 +1,42 @@
 package com.capstone.lockerapi.controllers;
 
 import com.capstone.lockerapi.exceptions.PostNotFoundException;
-import com.capstone.lockerapi.models.ForumPost;
+import com.capstone.lockerapi.models.Post;
 import com.capstone.lockerapi.services.ForumPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(allowedHeaders = "*", origins = "http://localhost:3000")
-public class ForumPostController {
+@CrossOrigin
+public class PostController {
 
     @Autowired
     private ForumPostService forumPostService;
 
     // Mapping to CREATE new post entity.
-    @PreAuthorize("hasAuthority('USER')")
     @PostMapping("/posts/create")
-    public ResponseEntity<ForumPost> createPost(@RequestBody ForumPost post) {
+    public ResponseEntity<Post> createPost(@RequestBody Post post) {
         return ResponseEntity.ok().body(forumPostService.savePost(post));
     }
 
     // Mapping to READ/VIEW all posts in DB.
     @GetMapping("/posts")
-    public ResponseEntity<List<ForumPost>> showAllPosts() {
+    public ResponseEntity<List<Post>> showAllPosts() {
         return ResponseEntity.ok().body(forumPostService.showAllPosts());
     }
 
     // Mapping to READ/VIEW single post.
-    @PreAuthorize("hasAuthority('USER')")
     @GetMapping("/posts/{id}")
-    public ResponseEntity<ForumPost> showSinglePost(@PathVariable long id) {
+    public ResponseEntity<Post> showSinglePost(@PathVariable long id) {
         return ResponseEntity.ok().body(forumPostService.findPostById(id)
                 .orElseThrow(() -> new PostNotFoundException(id)));
     }
 
     // Mapping to UPDATE/EDIT post.
     @PutMapping("/posts/{id}/edit-post")
-    public ResponseEntity<ForumPost> editPost(@RequestBody ForumPost postToEdit, @PathVariable long id) {
+    public ResponseEntity<Post> editPost(@RequestBody Post postToEdit, @PathVariable long id) {
             return ResponseEntity.ok().body(forumPostService.findPostById(id)
                     .map(post -> {
                         post.setPostBody(postToEdit.getPostBody());

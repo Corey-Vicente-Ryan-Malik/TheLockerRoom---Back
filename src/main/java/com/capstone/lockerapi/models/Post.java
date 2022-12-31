@@ -1,12 +1,13 @@
 package com.capstone.lockerapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
 @JsonIgnoreProperties({"team"})
 @Table(name = "forum_posts")
-public class ForumPost {
+public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,25 +17,25 @@ public class ForumPost {
     private String postBody;
 
 
-    @JsonIgnoreProperties({"posts", "password", "stake", "firstName", "lastName", "email", "favTeam", "role"})
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties({"posts", "password", "stake", "firstName", "lastName", "favTeam"})
     private User user;
 
 
     // CONSTRUCTORS
-    public ForumPost(long id, String postBody, User user) {
+    public Post(long id, String postBody, User user) {
         this.id = id;
         this.postBody = postBody;
         this.user = user;
     }
 
-    public ForumPost(String postBody, User user) {
+    public Post(String postBody, User user) {
         this.postBody = postBody;
         this.user = user;
     }
 
-    public ForumPost() {}
+    public Post() {}
 
     // GETTERS & SETTERS
     public long getId() {
