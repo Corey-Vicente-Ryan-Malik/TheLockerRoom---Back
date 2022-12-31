@@ -1,7 +1,6 @@
 package com.capstone.lockerapi.models;
 
 
-import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
@@ -34,7 +33,7 @@ public class User {
 
     // One user can have many posts.
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<ForumPost> posts;
+    private List<Post> posts;
 
     // One user can have one favorite team.
     @OneToOne
@@ -50,7 +49,7 @@ public class User {
     // First one with all fields.
     // Second one for registration without favorite team.
     // Third one for registration with favorite team.
-    public User(long id, String firstName, String lastName, String username, String email, String password, List<ForumPost> posts, Team favTeam, Stake stake) {
+    public User(long id, String firstName, String lastName, String username, String email, String password, List<Post> posts, Team favTeam, Stake stake) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -141,11 +140,11 @@ public class User {
         this.role = role;
     }
 
-    public List<ForumPost> getPosts() {
+    public List<Post> getPosts() {
         return posts;
     }
 
-    public void setPosts(List<ForumPost> posts) {
+    public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
 
