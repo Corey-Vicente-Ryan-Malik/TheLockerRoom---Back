@@ -70,6 +70,15 @@ public class User {
         this.role = role;
     }
 
+    public User(String firstName, String lastName, String username, String email, String password, Team favTeam) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.favTeam = favTeam;
+    }
+
     public User(String firstName, String lastName, String username, String email, String password, UserRole role, Team favTeam) {
         this.firstName = firstName;
         this.lastName = lastName;
