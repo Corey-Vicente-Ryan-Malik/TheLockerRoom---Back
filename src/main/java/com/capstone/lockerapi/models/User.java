@@ -89,6 +89,15 @@ public class User {
         this.favTeam = favTeam;
     }
 
+    public User(long id, String firstName, String lastName, String username, String password, Team favTeam) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.favTeam = favTeam;
+    }
+
     public User() {}
 
 

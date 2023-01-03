@@ -17,7 +17,7 @@ public class Post {
     private String postBody;
 
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
+    @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnoreProperties({"posts", "password", "stake", "firstName", "lastName", "favTeam"})
     private User user;

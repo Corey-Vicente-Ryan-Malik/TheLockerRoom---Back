@@ -1,6 +1,5 @@
 package com.capstone.lockerapi.exceptions;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonTypeIdResolver;
@@ -88,7 +87,8 @@ class ApiError {
     }
 
     /**
-     * Utility method for adding error of ConstraintViolation. Usually when a @Validated validation fails.
+     * Utility method for adding error of ConstraintViolation. Usually when
+     * a @Validated validation fails.
      *
      * @param cv the ConstraintViolation
      */
@@ -147,7 +147,6 @@ class ApiError {
     abstract class ApiSubError {
 
     }
-
 
     class ApiValidationError extends ApiSubError {
         private String object;
