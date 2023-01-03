@@ -44,7 +44,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .and()
                 // Allowing restricting access to API endpoints.
                 .authorizeRequests()
-                .antMatchers("/posts/**", "/teams", "/register", "/users/**")
+                .antMatchers("/posts/**", "/teams", "/register", "/users/**", "/user/**")
                 .permitAll()
                 // For API documentation.
                 .antMatchers("/swagger-ui/**", "/v3/api-docs/**")
