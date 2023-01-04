@@ -11,10 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class LockerApiApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(LockerApiApplication.class, args);
-    }
+    @Bean
     public WebMvcConfigurer corsMappingConfigurer() {
         return new WebMvcConfigurer() {
             @Override
@@ -29,5 +26,9 @@ public class LockerApiApplication {
             }
         };
     }
+    public static void main(String[] args) {
+        SpringApplication.run(LockerApiApplication.class, args);
+    }
+
 
 }
