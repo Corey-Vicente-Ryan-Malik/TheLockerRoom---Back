@@ -21,6 +21,9 @@ public class User {
     @Column(nullable = false, unique = true, length = 20)
     private String username;
 
+    @Column(nullable = false)
+    private int favoriteTeam;
+
     @Column(nullable = false, unique = true)
     private String email;
 
@@ -49,7 +52,7 @@ public class User {
     // First one with all fields.
     // Second one for registration without favorite team.
     // Third one for registration with favorite team.
-    public User(long id, String firstName, String lastName, String username, String email, String password, List<Post> posts, Team favTeam, Stake stake) {
+    public User(long id, String firstName, String lastName, String username, String email, String password, List<Post> posts, int favoriteTeam, Stake stake) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -57,7 +60,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.posts = posts;
-        this.favTeam = favTeam;
+        this.favoriteTeam = favoriteTeam;
         this.stake = stake;
     }
 
@@ -70,38 +73,65 @@ public class User {
         this.role = role;
     }
 
-    public User(String firstName, String lastName, String username, String email, String password, Team favTeam) {
+    public User(String firstName, String lastName, String username, String email, String password, int favoriteTeam) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.favTeam = favTeam;
+        this.favoriteTeam = favoriteTeam;
     }
 
-    public User(String firstName, String lastName, String username, String email, String password, UserRole role, Team favTeam) {
+    public User(String firstName, String lastName, String username, String email, String password, UserRole role, int favoriteTeam) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.email = email;
         this.password = password;
         this.role = role;
-        this.favTeam = favTeam;
+        this.favoriteTeam = favoriteTeam;
     }
 
-    public User(long id, String firstName, String lastName, String username, String password, Team favTeam) {
+    public User(long id, String firstName, String lastName, String username, String password, int favoriteTeam) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
-        this.favTeam = favTeam;
+        this.favoriteTeam = favoriteTeam;
     }
 
     public User() {}
 
+    public User(String firstName, String lastName, String username, int favoriteTeam, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.favoriteTeam = favoriteTeam;
+        this.email = email;
+        this.password = password;
+    }
 
-    // GETTERS & SETTERS
+    public User(long id, String firstName, String lastName, String username, int favoriteTeam, String email, String password, UserRole role, List<Post> posts) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.favoriteTeam = favoriteTeam;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.posts = posts;
+    }
+
+    public int getFavoriteTeam() {
+        return favoriteTeam;
+    }
+
+    public void setFavoriteTeam(int favoriteTeam) {
+        this.favoriteTeam = favoriteTeam;
+    }
+// GETTERS & SETTERS
 
     public long getId() {
         return id;
