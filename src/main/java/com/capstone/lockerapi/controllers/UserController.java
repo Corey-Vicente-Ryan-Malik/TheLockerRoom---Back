@@ -69,6 +69,12 @@ public class UserController {
                     user.setUsername(userToEdit.getUsername());
                     user.setPassword(userToEdit.getPassword());
                     user.setRole(userToEdit.getRole());
+                    // If user sends no favorite team, assign the Cowboys as their favorite team.
+                    if (userToEdit.getFavoriteTeam() == 0) {
+                        user.setFavoriteTeam(6);
+                    } else {
+                        user.setFavoriteTeam(userToEdit.getFavoriteTeam());
+                    }
                     return userService.saveUser(user);
                 }).orElseThrow(() -> new UserNotFoundException(id)));
     }
